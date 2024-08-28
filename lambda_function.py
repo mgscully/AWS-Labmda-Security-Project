@@ -19,11 +19,13 @@ def lambda_handler(event, context):
     message = {
         "text": "Security Alert: An ssh attempt has indicated this system has been compromised. The system has been shut down until the source of the compromise can be identified and remedial measure can be implemented. Please switch to backed up records until the system can go back online."
     }
-    
+
+    #response from http client
     headers = {'Content-Type': 'application/json'}
     conn.request("POST", url, body=json.dumps(message), headers=headers)
     response = conn.getresponse()
-    
+
+    #return response 
     return {
         'statusCode': response.status,
         'body': response.read().decode()
