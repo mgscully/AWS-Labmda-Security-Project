@@ -1,6 +1,26 @@
-AWS Security Function Automation Project by Jake and Miranda
-<p> In this project, we create a mock system for a hospital. We created a VPC for the hospital with a public and private subnet. The system includes public EC2 instances for each department, a bastion server to allow the public instances access to the database, and a private database server. Within the database server, we have a MySQL database that contains two tables: medical data and billing data. Each department has a log in to the database and each department has different levels of accessibility to each table depending on their role. This multilayered security approach helps heavily protecy our sensitive data. The essence of our project is automating security alerts using AWS lambda. We created a lambda function that sends security alerts to the IT department upon multiple failed attempts into our bastion server. This allows us to protect our sensitive data against brute force attacks. 
-  We use AWS resources and infastructure to automate encyrption for users on the organization's platform as well as authomate security alerts upon suspicious activity.</p>
+#AWS Security Function Automation Project by Jake and Miranda
+
+##Summary
+<p> This project uses AWS lambda and cloudwatch to automate security alerts and measures for a sample hospital web environment. We specifically aim to prevent and respond to brute force ssh attacks. </p>
+
+##Features 
+-EC2 instance monitoring: monitors invalid ssh attempts bastion host using cloudwatch 
+-Emails notification via AWS SNS: IT administrator receives email upon detection of 2 or more invalid ssh attempts 
+-Bastion host termination upon suspicious ssh attempts 
+-Full team notification via slack 
+
+##Requirements 
+-AWS 
+-Slack webhook 
+-Python 3 environment
+
+##Setup 
+-Upload lambda function to AWS management console 
+-Change url in function to your slack webhook
+-Ensure IAM role associated with lambda functions has permisions to stop EC2 instances and send logs to cloudwatch 
+-Create cloudwatch alarm that monitors ssh attempts on /var/log/secure 
+-Set the alarm to trigger after 2 or more invalid attempts within a certain timeframe 
+
 
 
 
