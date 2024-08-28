@@ -20,7 +20,8 @@ def lambda_handler(event, context):
         "text": "Security Alert: An ssh attempt has indicated this system has been compromised. The system has been shut down until the source of the compromise can be identified and remedial measure can be implemented. Please switch to backed up records until the system can go back online."
     }
 
-    #response from http client
+    #send message in json format to slack 
+    #learned how to do this from online resources
     headers = {'Content-Type': 'application/json'}
     connection.request("POST", url, body=json.dumps(message), headers=headers)
     response = connection.getresponse()
