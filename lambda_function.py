@@ -14,7 +14,7 @@ def lambda_handler(event, context):
     ec2.stop_instances(InstanceIds=[instance_id])
         
     # Send Slack notification 
-    conn = http.client.HTTPSConnection("hooks.slack.com")
+    connection = http.client.HTTPSConnection("hooks.slack.com")
     url = "/services/T07JRGQ7MHR/B07K4CC87DF/0fMgr6N9fyomJnBuCoTZ9AYI"
     message = {
         "text": "Security Alert: An ssh attempt has indicated this system has been compromised. The system has been shut down until the source of the compromise can be identified and remedial measure can be implemented. Please switch to backed up records until the system can go back online."
@@ -22,8 +22,8 @@ def lambda_handler(event, context):
 
     #response from http client
     headers = {'Content-Type': 'application/json'}
-    conn.request("POST", url, body=json.dumps(message), headers=headers)
-    response = conn.getresponse()
+    connection.request("POST", url, body=json.dumps(message), headers=headers)
+    response = connection.getresponse()
 
     #return response 
     return {
