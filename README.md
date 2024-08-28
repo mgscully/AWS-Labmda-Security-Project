@@ -1,26 +1,24 @@
-#AWS Security Function Automation Project by Jake and Miranda
+# AWS Security Function Automation Project by Jake and Miranda
 
-##Summary
-<p> This project uses AWS lambda and cloudwatch to automate security alerts and measures for a sample hospital web environment. We specifically aim to prevent and respond to brute force ssh attacks. </p>
+## Summary
+This project uses AWS Lambda and CloudWatch to automate security alerts and measures for a sample hospital web environment. We specifically aim to prevent and respond to brute force SSH attacks.
 
-##Features 
--EC2 instance monitoring: monitors invalid ssh attempts bastion host using cloudwatch 
--Emails notification via AWS SNS: IT administrator receives email upon detection of 2 or more invalid ssh attempts 
--Bastion host termination upon suspicious ssh attempts 
--Full team notification via slack 
+## Features
+- **EC2 Instance Monitoring:** Monitors invalid SSH attempts on the bastion host using CloudWatch.
+- **Email Notification via AWS SNS:** IT administrator receives an email upon detection of 2 or more invalid SSH attempts.
+- **Bastion Host Termination:** Terminates the bastion host upon suspicious SSH attempts.
+- **Team Notification via Slack:** Sends a full team notification through Slack.
 
-##Requirements 
--AWS 
--Slack webhook 
--Python 3 environment
+## Requirements
+- AWS
+- Slack Webhook
+- Python 3 Environment
 
-##Setup 
--Upload lambda function to AWS management console 
--Change url in function to your slack webhook
--Ensure IAM role associated with lambda functions has permisions to stop EC2 instances and send logs to cloudwatch 
--Create cloudwatch alarm that monitors ssh attempts on /var/log/secure 
--Set the alarm to trigger after 2 or more invalid attempts within a certain timeframe 
-
-
+## Setup
+- Upload Lambda function to AWS Management Console.
+- Change the URL in the function to your Slack webhook.
+- Ensure the IAM role associated with Lambda functions has permissions to stop EC2 instances and send logs to CloudWatch.
+- Create a CloudWatch alarm that monitors SSH attempts on `/var/log/secure`.
+- Set the alarm to trigger after 2 or more invalid attempts within a certain timeframe.
 
 
